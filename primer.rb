@@ -1,27 +1,18 @@
-triangle = {}
-for i in 0..2
-  puts "Введите #{i + 1}-ю сторону"
-  triangle[i] = gets.chomp.to_f
-end
-#Проверим на равносторонность и равнобедренность
-if triangle[0] == triangle[1] and triangle[1] == triangle[2]
-  is_equilateral = true
-elsif triangle[0] == triangle[1] or triangle[1] == triangle[2] or triangle[0] == triangle[2]
-  is_isosceles = true
-end
 
-triangle.sort
-is_ra = triangle[0] ** 2 + triangle[1] ** 2 == triangle[2] ** 2
 
-if is_equilateral
-  puts "Ваш треугольник равносторонний"
-elsif
-  is_isosceles and is_ra
-  puts "Ваш треугольник равнобедренный и прямоугольный"
-elsif is_isosceles
-  puts "Ваш треугольник равнобедренный"
-elsif is_ra
-  puts "Ваш треугольник прямоугольный"
+puts "Введите значение a"
+a = gets.chomp.to_f
+puts "Введите значение b"
+b = gets.chomp.to_f
+puts "Введите значение c"
+c = gets.chomp.to_f
+
+d = b ** 2 - 4 * a * c
+dsqrt = Math.sqrt(d)
+if d < 0
+  puts "Дискриминант: #{d}. Корней нет"
+elsif d == 0
+  puts "Дискриминант: #{d}. Корень равен #{-b / (2 * a)} "
 else
-  puts "У вас просто треугольник"
+  puts "Дискриминант: #{d}. Первый корень равен #{(-b + dsqrt)/(2 * a)}, а второй #{(-b - dsqrt)/(2 * a)}"
 end
