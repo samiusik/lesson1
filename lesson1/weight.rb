@@ -7,6 +7,6 @@ weight = gets.to_i
 ideal = growth - 110
 if ideal > weight
   puts "Ваш вес уже оптимальный"
-else 
+else
   puts "#{name}, привет! Ваш идеальный вес составляет #{ideal} кг."
 end
