@@ -3,9 +3,7 @@ cart = {}
 loop do
   puts "Введите название товара. Введите 'стоп' для окончания ввода"
   goods = gets.chomp
-  if goods == "стоп"
-    break
-  end
+  break if goods == "стоп"
   puts "введите цену товара"
   price = gets.to_f
   puts "Введите количество товара"

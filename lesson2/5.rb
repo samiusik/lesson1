@@ -24,8 +24,5 @@ mounths.each do |current_number|
   count += days_in_month[current_number]
 end
 count += day
-
-if year % 4 == 0 && (year % 400 == 0 || year % 100 != 0) && mounth >= 3
-  count += 1
-end
+count += 1 if year % 4 == 0 && (year % 400 == 0 || year % 100 != 0) && mounth >= 3
 puts count
