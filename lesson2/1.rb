@@ -12,6 +12,6 @@ hash = {
   november: 30,
   december: 31,
 }
-hash.each do | key, number |
+hash.each do |key, number|
   puts key if number == 30
 end
