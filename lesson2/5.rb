@@ -4,7 +4,7 @@ puts "Введите месяц"
 mounth = gets.to_i
 puts "Введите день"
 day = gets.to_i
-count_days = {
+days_in_month = {
   1 => 31,
   2 => 28,
   3 => 31,
@@ -21,12 +21,11 @@ count_days = {
 mounths = (1..(mounth-1)).to_a
 count = 0
 mounths.each do |current_number|
-  count += count_days[current_number]
+  count += days_in_month[current_number]
 end
 count += day
 
 if year % 4 == 0 && (year % 400 == 0 || year % 100 != 0) && mounth >= 3
   count += 1
 end
-
 puts count

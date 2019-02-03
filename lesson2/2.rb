@@ -1,4 +1,3 @@
-
 i = 10
 numbers = []
 while i <= 100
