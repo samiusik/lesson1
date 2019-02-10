@@ -71,36 +71,36 @@ class Train
     @quantity_wagon -= 1 if speed == 0 && quantity_wagon > 0
   end
 
-  def set_routs(rout)
-    @routs = rout
-    @current_station = @routs.stations.first
+  def set_route(new_route)
+    @route = new_route
+    @current_station = @route.stations.first
     @current_station.get_train(self)
   end
 
   def next_station
-    @routs.stations[@routs_position + 1] unless @routs_position ==  @routs.stations.size - 1
+    @route.stations[@routs_position + 1] unless @routs_position ==  @route.stations.size - 1
   end
 
   def prev_station
-    @routs.stations[@routs_position - 1] unless @routs_position.zero?
+    @route.stations[@routs_position - 1] unless @routs_position.zero?
   end
 
   def move_forward
-    station_index = @routs.stations.index(@current_station)
-    if station_index >= @routs.stations.size - 1
+    station_index = @route.stations.index(@current_station)
+    if station_index >= @route.stations.size - 1
       puts "end of rout"
     else
-      @current_station = @routs.stations[station_index + 1]
+      @current_station = @route.stations[station_index + 1]
       @current_station.get_train(self)
     end
   end
 
   def move_back
-    station_index = @routs.stations.index(@current_station)
+    station_index = @route.stations.index(@current_station)
     if station_index <= 0
       puts "begin of rout"
     else
-      @current_station = @routs.stations[station_index - 1]
+      @current_station = @route.stations[station_index - 1]
       @current_station.get_train(self)
     end
   end
