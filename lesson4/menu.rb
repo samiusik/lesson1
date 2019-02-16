@@ -4,7 +4,7 @@ class Menu
     @stations = []
     @trains = []
     @route = nil
-    @wagons = []
+    @carriages = []
   end
 
   def run
@@ -55,9 +55,9 @@ class Menu
     when 6 then
       set_route_to_train
     when 7 then
-      add_wagon
+      add_carriage
     when 8 then
-      remove_wagon
+      remove_carriage
     when 9 then
       move_forward
     when 10 then
