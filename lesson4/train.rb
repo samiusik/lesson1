@@ -6,7 +6,7 @@ class Train
     @number = number
     @speed = 0
     @routs_position = 0
-    @carriges = []
+    @carriages = []
   end
 
 
@@ -14,12 +14,12 @@ class Train
     self.speed = 0
   end
 
-  def add_carrige(carrige)
-    @carriges << carrige if speed == 0 && @type == carrige.type
+  def add_carriage(carriage)
+    @carriages << carriage if speed == 0 && @type == carriage.type
   end
 
-  def remove_carrige
-    @carriges.shift if speed == 0
+  def remove_carriage
+    @carriages.shift if speed == 0
   end
 
   def set_route(new_route)

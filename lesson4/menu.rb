@@ -38,8 +38,6 @@ class Menu
 
   attr_accessor :choise
 
-  #Методы используются только внутри класса
-
   def change_choice
     case choise
     when 1 then
@@ -158,8 +156,8 @@ class Menu
 
   def add_carriage
     train = chose_train
-    carriages = train.class == PassengerTrain ? PassengerCarriages.new : CargoCarriages.new
-    train.add_carriage(carriage)
+    carriages = train.class == PassengerTrain ? PassengerCarriage.new : CargoCarriage.new
+    train.add_carriage(carriages)
   end
 
   def remove_carriage
