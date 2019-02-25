@@ -1,10 +1,10 @@
 class Train
-  attr_accessor :speed
-  attr_reader :route, :number, :current_station
-  
   include InstanceCounter
   include Manufacture
 
+  attr_accessor :speed
+  attr_reader :route, :number, :current_station
+  
   def initialize(number)
     @number = number
     @speed = 0

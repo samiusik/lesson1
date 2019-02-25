@@ -1,7 +1,7 @@
 class Rout
-  attr_reader :stations
-
   include InstanceCounter
+
+  attr_reader :stations
 
   def initialize(first, last)
     @stations = [first, last]
