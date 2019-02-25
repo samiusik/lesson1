@@ -2,16 +2,17 @@ class Station
 
   include InstanceCounter
   
-  @@all = {}
-  def self.all_obj
-    @@all.each {|names| puts names}
-  end
-
-  attr_reader :name, :trains, @@all[name] = self
+  attr_reader :name, :trains
 
   def initialize(name)
     @name = name
     @trains = []
+    @@all[name] = self
+  end
+  
+  @@all = {}
+  def self.all_obj
+    @@all.each {|names| puts names}
   end
 
   def get_train(train)

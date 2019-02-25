@@ -7,8 +7,8 @@ require_relative "passenger_train.rb"
 require_relative "route.rb"
 require_relative "station.rb"
 require_relative "menu.rb"
-require_relative "moduleInstanceCounter.rb"
-require_relative "moduleManufacture.rb"
+require_relative "instance_counter.rb"
+require_relative "manufacture.rb"
 
 menu = Menu.new
 menu.run

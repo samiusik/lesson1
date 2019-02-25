@@ -2,8 +2,6 @@ class Train
   attr_accessor :speed
   attr_reader :route, :number, :current_station
   
-
-  
   include InstanceCounter
   include Manufacture
 
@@ -19,7 +17,6 @@ class Train
   def self.find(number)
     @@all_trains[number]
   end
-
 
   def stop
     self.speed = 0
