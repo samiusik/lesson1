@@ -1,4 +1,8 @@
+require_relative 'manufacture.rb'
+require_relative 'instance_counter.rb'
+
 class Train
+
   include InstanceCounter
   include Manufacture
 
@@ -11,6 +15,7 @@ class Train
     @routs_position = 0
     @carriages = []
     @@all_trains[@number] = self
+    register_instance
   end
 
   @@all_trains = {}
