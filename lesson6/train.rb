@@ -15,9 +15,9 @@ class Train
     @speed = 0
     @routs_position = 0
     @carriages = []
+    validate!
     @@all_trains[@number] = self
     register_instance
-    validate!
   end
 
   @@all_trains = {}
