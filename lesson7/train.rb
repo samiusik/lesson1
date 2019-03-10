@@ -22,7 +22,7 @@ class Train
 
   def each
     @carriages.each do |carriage|
-      yield(carriage)
+      yield carriage
     end
   end
 

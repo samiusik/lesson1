@@ -17,7 +17,7 @@ class Station
 
   def each
     @trains.each do |train|
-      yield(train)
+      yield train
     end
   end
 

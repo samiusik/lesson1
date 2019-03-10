@@ -21,7 +21,8 @@ class Menu
       puts '11. Посмотреть список станций'
       puts '12. Посмотреть список поездов на станции'
       puts '13. Посмотреть список вагонов в поезде'     
-      puts '14. Выход'
+      puts '14. Занять место или объем в вагоне'
+      puts '15. Выход'
 
       @choise = gets.to_i
 
@@ -66,6 +67,8 @@ class Menu
         print_trains_on_station
       when 13 then 
         show_carriages_in_train
+      when 14 then        
+        take_place_in_wagon
       else false
     end
   end
@@ -206,4 +209,17 @@ class Menu
 
     train.move_back
   end
+
+  def take_place_in_wagon
+    wagon = chose_wagon
+    return unless @train
+    if @train.type == 'Passenger'
+      wagon.take_place
+    else
+      puts('Укажите объём')
+      volume = gets.to_i
+      wagon.take_volume(volume)
+    end
+  end
+
 end
