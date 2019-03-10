@@ -20,7 +20,7 @@ class Train
     register_instance
   end
 
-  def each
+  def each_carriage
     @carriages.each do |carriage|
       yield carriage
     end

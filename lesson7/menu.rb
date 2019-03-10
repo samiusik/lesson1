@@ -28,7 +28,7 @@ class Menu
 
       break if choise == 13
 
-      change_choice
+      change_chose
     end
   end
 
@@ -39,7 +39,7 @@ class Menu
 
   attr_accessor :choise
 
-  def change_choice
+  def change_chose
     case choise
       when 1 then
         create_station
@@ -68,7 +68,7 @@ class Menu
       when 13 then 
         show_carriages_in_train
       when 14 then        
-        take_place_in_wagon
+        take_place_in_carriage
       else false
     end
   end
@@ -157,7 +157,7 @@ class Menu
   end
 
   def show_carriages_in_train
-    train = choice_station
+    train = chose_station
     if train.type == :cargo
       train.each_carriage do |i, c|
         puts "#{i + 1}: Грузовой #{c.free_volume}/#{c.busy_volume}"
@@ -179,6 +179,15 @@ class Menu
     choise <= @trains.size ? @trains[choise - 1] : chose_train
   end
 
+  def chose_carriage
+  show_carriages_in_train
+  return unless @train
+  puts 'Выберите вагон'
+  choise = gets.to_i
+  choise <= @train.carriages.size ? @train&.carriages[choise - 1] : chose_carriage
+end
+
+
   def add_carriage
     train = chose_train
     train.type == 'Passenger' ? (puts 'Введи количество мест:') : (puts 'Введи объем:')
@@ -193,7 +202,7 @@ class Menu
 
   def print_trains_on_station
     station = @stations[chose_station - 1]
-    station.trains.each { |train| puts "Поезд: #{train.number} #{train.class}" }
+    station&.each_train { |train| puts "Поезд: #{train.number} #{train.class}" }
   end
 
   def move_forward
@@ -210,16 +219,15 @@ class Menu
     train.move_back
   end
 
-  def take_place_in_wagon
-    wagon = chose_wagon
+  def take_place_in_carriage
+    carriage = chose_carriage
     return unless @train
     if @train.type == 'Passenger'
-      wagon.take_place
+      carriage.take_place
     else
       puts('Укажите объём')
       volume = gets.to_i
-      wagon.take_volume(volume)
+      carriage.take_volume(volume)
     end
   end
-
 end

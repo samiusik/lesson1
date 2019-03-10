@@ -15,7 +15,7 @@ class Station
     @@all[name] = self
   end
 
-  def each
+  def each_train
     @trains.each do |train|
       yield train
     end

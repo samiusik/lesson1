@@ -1,4 +1,6 @@
 class CargoCarriage < Carriage
+  attr_reader :volume, :total_volume
+  
   def initialize(total_volume)
     @type = 'Cargo'
     @total_volume = total_volume
