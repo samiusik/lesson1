@@ -5,7 +5,7 @@ class Train
   include InstanceCounter
   include Manufacture
 
-  NUMBER = /^\d{3}-?[a-z]{2}$/i
+  NUMBER = /^\d{3}-?[a-z]{2}$/i.freeze
 
   attr_accessor :speed
   attr_reader :route, :number, :current_station
@@ -52,7 +52,7 @@ class Train
   end
 
   def next_station
-    @route.stations[@routs_position + 1] unless @routs_position ==  @route.stations.size - 1
+    @route.stations[@routs_position + 1] unless @routs_position == @route.stations.size - 1
   end
 
   def prev_station
@@ -61,7 +61,7 @@ class Train
 
   def move_forward
     if @station_index >= @route.stations.size - 1
-      puts "end of rout"
+      puts 'end of rout'
     else
       @current_station = @route.stations[@station_index + 1]
       @current_station.get_train(self)
@@ -70,7 +70,7 @@ class Train
 
   def move_back
     if @station_index <= 0
-      puts "begin of rout"
+      puts 'begin of rout'
     else
       @current_station = @route.stations[@station_index - 1]
       @current_station.get_train(self)
@@ -79,14 +79,15 @@ class Train
 
   def valid?
     validate!
-  rescue
+  rescue StandardError
     false
   end
 
   protected
 
   def validate!
-    raise ArgumentError, "Некорректный номер (проверь шаблон)!" if number !~ NUMBER
+    raise ArgumentError, 'Некорректный номер (проверь шаблон)!' if number !~ NUMBER
+
     true
   end
 end

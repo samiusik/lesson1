@@ -1,6 +1,6 @@
 class CargoCarriage < Carriage
   attr_reader :volume, :total_volume
-  
+
   def initialize(total_volume)
     @type = 'Cargo'
     @total_volume = total_volume
@@ -11,9 +11,7 @@ class CargoCarriage < Carriage
     @busy_volume += volume if @total_volume > @busy_volume + volume
   end
 
-  def busy_volume
-    @busy_volume
-  end
+  attr_reader :busy_volume
 
   def free_volume
     @total_volume - @busy_volume

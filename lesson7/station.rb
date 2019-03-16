@@ -3,7 +3,7 @@ require_relative 'instance_counter'
 class Station
   include InstanceCounter
 
-  STATION_NAME = /[a-z]{3,}/i
+  STATION_NAME = /[a-z]{3,}/i.freeze
 
   attr_reader :name, :trains
 
@@ -23,7 +23,7 @@ class Station
 
   @@all = {}
   def self.all_obj
-    @@all.each {|names| puts names}
+    @@all.each { |names| puts names }
   end
 
   def get_train(train)
@@ -40,7 +40,7 @@ class Station
 
   def valid?
     validate!
-  rescue
+  rescue StandardError
     false
   end
 
@@ -48,6 +48,7 @@ class Station
 
   def validate!
     raise ArgumentError, 'Название должно содержать от 3-ёх букв ' if name !~ STATION_NAME
+
     true
   end
 end

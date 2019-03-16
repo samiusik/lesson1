@@ -16,7 +16,7 @@ class Rout
 
   def delete_station(station)
     if [@stations.first, @stations.last].include?(station)
-      puts "нельзя удалить начальную и конечную станцию"
+      puts 'нельзя удалить начальную и конечную станцию'
     else
       @stations.delete(station)
     end
@@ -28,17 +28,17 @@ class Rout
     end
   end
 
-    def valid?
+  def valid?
     validate!
-  rescue
-    false    
-  end
+  rescue StandardError
+    false
+end
 
   private
-  
+
   attr_reader :first, :last, :stations
-  def validate! 
-    stations.each {|station| raise "Начальная или конечная не является объектом класса." unless station.is_a?(Station)}
-    true  
+  def validate!
+    stations.each { |station| raise 'Начальная или конечная не является объектом класса.' unless station.is_a?(Station) }
+    true
   end
 end
